@@ -35,7 +35,7 @@ public class ChatbotRicky implements Topic {
 			else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0 ) {
 				ChatbotMain.print("Oh my goodness! You guessed my favorite thing ever. We are friends now.");
 			}
-			else {
+			else { 
 				ChatbotMain.print("Huh. I don't really get you. Tell me something else?");
 			}
 		}
