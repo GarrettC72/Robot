@@ -4,10 +4,14 @@ public class Chatbot {
 	
 	private String userName;
 	private Topic garrett;
+	private Topic ricky;
+	private Topic amanat;
 	private boolean chatting;
 	
 	public Chatbot() {
 		garrett = new ChatbotGarrett();
+		ricky = new ChatbotRicky();
+		amanat = new ChatbotAmanat();
 		userName = "unknown user";
 		chatting = true;
 	}
@@ -22,7 +26,13 @@ public class Chatbot {
 			if(garrett.isTriggered(response)) {
 				chatting = false;
 				garrett.startChatting(response);
-			}else {
+			}else if(ricky.isTriggered(response)) {
+				chatting = false;
+				ricky.startChatting(response);
+			}else if(amanat.isTriggered(response)) {
+				chatting = false;
+				amanat.startChatting(response);
+			}else{
 				ChatbotMain.print("I'm sorry. I don't understand.");
 			}
 		}
