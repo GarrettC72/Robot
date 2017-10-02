@@ -8,10 +8,10 @@ public class ChatbotGarrett implements Topic {
 	private boolean chatting;
 	
 	public ChatbotGarrett() {
-		String[] temp = {"food", "entertainment", "Internet", "video games"};
+		String[] temp = {"grow", "plants", "fruits", "vegetables"};
 		keywords = temp;
 		goodbyeWord = "bye";
-		secretWord = "pug";
+		secretWord = "rainbow carrots";
 	}
 
 	@Override
