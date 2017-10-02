@@ -3,12 +3,16 @@ package chatbotProject;
 public class ChatbotGarrett implements Topic {
 	
 	private String[] keywords;
+	private String[] vegetables;
+	private String[] fruits;
 	private String goodbyeWord;
 	private String secretWord;
 	private boolean chatting;
 	
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "plants", "fruits", "vegetables"};
+		String[] temp2 = {};
+		String[] temp3 = {};
 		keywords = temp;
 		goodbyeWord = "bye";
 		secretWord = "rainbow carrots";
