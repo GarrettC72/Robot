@@ -8,10 +8,10 @@ public class ChatbotRicky implements Topic {
 	private boolean chatting;
 	
 	public ChatbotRicky() {
-		String[] temp = {"food","entertainment","Internet","video games"}; 
+		String[] temp = {"eat","hungry","starving", "snack"}; 
 		keywords = temp;
 		goodbyeWord = "bye";	
-		secretWord = "";
+		secretWord = "California Roll";
 	}
 	
 	public boolean isTriggered(String response) {
