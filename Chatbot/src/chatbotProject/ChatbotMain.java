@@ -42,7 +42,7 @@ public class ChatbotMain {
 
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
 		//find last word
-		if (!(keyword.charAt(0) == (s.charAt(psn)))) {
+		if (!(keyword.equals(s.substring(psn, psn + keyword.length())))) {
 			return false;
 		}
 		if (s.indexOf(psn + keyword.length()) == -1) {
