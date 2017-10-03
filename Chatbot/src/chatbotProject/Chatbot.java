@@ -37,5 +37,8 @@ public class Chatbot {
 			}
 		}
 	}
-
+	
+	public String getUserName() {
+		return userName;
+	}
 }

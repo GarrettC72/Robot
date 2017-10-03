@@ -11,13 +11,13 @@ public class ChatbotGarrett implements Topic {
 	
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "plants", "fruits", "vegetables"};
-		String[] temp2 = {"corn", "lettuce", "potato", "cucumber"};
-		String[] temp3 = {"apple", "orange", "watermelon", "grapes"};
+		String[] temp2 = {"corn", "lettuce", "potato", "tomato", "carrot", "broccoli"};
+		String[] temp3 = {"apple", "banana", "strawberry", "strawberries", "grapes", "watermelon"};
 		keywords = temp;
 		vegetables = temp2;
 		fruits = temp3;
 		goodbyeWord = "bye";
-		secretWord = "rainbow carrots";
+		secretWord = "green thumb";
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class ChatbotGarrett implements Topic {
 
 	@Override
 	public void startChatting(String response) {
-		ChatbotMain.print("Hey! It sounds like you and I have common interests! Let's talk some more!");
+		ChatbotMain.print("Hey! It sounds like you want to grow your own food! What would you like to know?");
 		chatting = true;
 		while(chatting) {
 			response = ChatbotMain.getInput();
@@ -40,9 +40,9 @@ public class ChatbotGarrett implements Topic {
 				chatting = false;
 				ChatbotMain.chatbot.startTalking();
 			}else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0) {
-				ChatbotMain.print("Oh my goodness! You guessed my favorite thing ever. We are friends now.");
+				ChatbotMain.print("Oh my goodness! You must be a gardening fanatic!");
 			}else {
-				ChatbotMain.print("Huh. I don't really get you. Tell me something else?");
+			ChatbotMain.print("Sorry, I don't know how to grow that particular plant. Can you tell me another one?");
 			}
 		}
 	}

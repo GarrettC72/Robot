@@ -8,9 +8,14 @@ public class ChatbotRicky implements Topic {
 	private boolean chatting;
 	
 	public ChatbotRicky() {
+<<<<<<< HEAD
 		String[] temp = {"snack"}; 
 		String[] temp2 = {"oreos","popcorn", "cookies","chips","doritos"};
 		keywords = temp;
+=======
+		String[] temp = {"eat","hungry","starving", "snack"}; 
+		keywords = temp;v
+>>>>>>> branch 'master' of https://github.com/GarrettC72/Robot.git
 		goodbyeWord = "bye";	
 		secretWord = "Pringles";
 	}
