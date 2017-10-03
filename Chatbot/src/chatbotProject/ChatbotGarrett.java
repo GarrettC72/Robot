@@ -11,9 +11,11 @@ public class ChatbotGarrett implements Topic {
 	
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "plants", "fruits", "vegetables"};
-		String[] temp2 = {};
-		String[] temp3 = {};
+		String[] temp2 = {"corn", "lettuce", "potato", "cucumber"};
+		String[] temp3 = {"apple", "orange", "watermelon", "grapes"};
 		keywords = temp;
+		vegetables = temp2;
+		fruits = temp3;
 		goodbyeWord = "bye";
 		secretWord = "rainbow carrots";
 	}
