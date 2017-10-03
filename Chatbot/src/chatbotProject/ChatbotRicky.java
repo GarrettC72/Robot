@@ -9,7 +9,7 @@ public class ChatbotRicky implements Topic {
 	
 	public ChatbotRicky() {
 		String[] temp = {"eat","hungry","starving", "snack"}; 
-		keywords = temp;v
+		keywords = temp;
 		goodbyeWord = "bye";	
 		secretWord = "California Roll";
 	}
