@@ -11,12 +11,11 @@ public class ChatbotRicky implements Topic {
 	
 	public ChatbotRicky() {
 		String[] temp = {"oreos","popcorn", "cookies","chips","doritos"};
-		String[] temp1 = {"eat","hungry","starving", "snack"}; 
-		keywords = temp;
-		snacks = temp1;
+		String[] temp1 = {"eat","hungry","starving", "snacks"}; 
+		keywords = temp1;
+		snacks = temp;
 		goodbyeWord = "bye";	
 		secretWord = "Pringles";
-		userName = ChatbotMain.chatbot.getUserName();
 	}
 	
 	public boolean isTriggered(String response) {
@@ -29,7 +28,8 @@ public class ChatbotRicky implements Topic {
 	}
 
 	public void startChatting(String response) {
-		ChatbotMain.print("Hey! You and I have a common interest in snacks!!");
+		userName = ChatbotMain.chatbot.getUserName();
+		ChatbotMain.print("Hey " + userName + " ! You and I have a common interest in snacks!!");
 		chatting = true;
 		while (chatting) {
 			response = ChatbotMain.getInput();
@@ -38,12 +38,15 @@ public class ChatbotRicky implements Topic {
 				ChatbotMain.chatbot.startTalking();
 			}
 			else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0 ) {
-				ChatbotMain.print("Oh my goodness! You are a legend if you like Pringles!");
-				continueChatting(response);
+				ChatbotMain.print("Oh my goodness! You are a legend! Go Pringles!");
 			}
 			else { 
 				ChatbotMain.print("Huh. I don't understand. Mind telling me something else, instead? Maybe a snack?");
-				continueChatting(response);
 			}
 		}
 	}
+	
+	public void continueChatting() {
+		ChatbotMain.print("This is a test.");
+	}
+}
