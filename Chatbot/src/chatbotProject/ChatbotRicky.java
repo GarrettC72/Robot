@@ -8,10 +8,11 @@ public class ChatbotRicky implements Topic {
 	private boolean chatting;
 	
 	public ChatbotRicky() {
-		String[] temp = {"eat","hungry","starving", "snack"}; 
+		String[] temp = {"snack"}; 
+		String[] temp2 = {"oreos","popcorn", "cookies","chips","doritos"};
 		keywords = temp;
 		goodbyeWord = "bye";	
-		secretWord = "California Roll";
+		secretWord = "Pringles";
 	}
 	
 	public boolean isTriggered(String response) {
@@ -24,7 +25,7 @@ public class ChatbotRicky implements Topic {
 	}
 
 	public void startChatting(String response) {
-		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more!");
+		ChatbotMain.print("Hey! It sounds like you and I have a common interest in snacks!!");
 		chatting = true;
 		while (chatting) {
 			response = ChatbotMain.getInput();
@@ -33,10 +34,31 @@ public class ChatbotRicky implements Topic {
 				ChatbotMain.chatbot.startTalking();
 			}
 			else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0 ) {
-				ChatbotMain.print("Oh my goodness! You guessed my favorite thing ever. Much respect to you!");
+				ChatbotMain.print("Oh my goodness! You are a legend if you like Pringles!");
+				continueChatting(response);
 			}
 			else { 
-				ChatbotMain.print("Huh. I don't understand. Mind tellling me something else, instead?");
+				ChatbotMain.print("Huh. I don't understand. Mind telling me something else, instead? Maybe a snack?");
+				continueChatting(response);
+			}
+		}
+	}
+	
+	public void continueChatting (String response) {
+		ChatbotMain.print("What is your favorite snack?");
+		chatting = true;
+		while(chatting) {
+			response = ChatbotMain.getInput();
+			if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
+				chatting = false;
+				ChatbotMain.chatbot.startTalking();
+			}
+			else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0 ) {
+				ChatbotMain.print("Oh my goodness! You are a legend if you like Pringles!");
+				continueChatting(response);
+			}
+			else {
+				ChatbotMain.print("test");
 			}
 		}
 	}
