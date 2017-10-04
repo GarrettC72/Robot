@@ -17,7 +17,7 @@ public class ChatbotAmanat implements Topic {
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
 		spicy = "spicy";
-		sour = "sour;
+		sour = "sour";
 		sweet = "sweet";
 		bitter = "bitter";
 		this.keywords = keywords;
@@ -25,7 +25,6 @@ public class ChatbotAmanat implements Topic {
 		secretWord = "flavor town";
 	}
 	
-	@Override
 	public boolean isTriggered(String response) {
 		for(int i = 0; i < keywords.length; i++) {
 			if(ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
@@ -35,9 +34,8 @@ public class ChatbotAmanat implements Topic {
 		return false;
 	}
 
-	@Override
 	public void startChatting(String response) {
-		username = ChatbotMain.chatbot.getUsername()
+		username = ChatbotMain.chatbot.getUserName();
 		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more " + username + "!");
 		chatting = true;
 		while(chatting) {
