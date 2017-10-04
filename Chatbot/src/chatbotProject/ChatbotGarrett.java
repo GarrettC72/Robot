@@ -9,16 +9,22 @@ public class ChatbotGarrett implements Topic {
 	private String secretWord;
 	private String userName;
 	private boolean chatting;
+	private boolean veggiechatting;
+	private boolean fruitchatting;
+	private int fruitCount;
+	private int veggieCount;
 	
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "plants", "fruits", "vegetables"};
-		String[] temp2 = {"corn", "lettuce", "potatoes", "tomatoes", "carrots"};
-		String[] temp3 = {"apples", "bananas", "strawberries", "grapes", "watermelons"};
+		String[] temp2 = {"turnips", "onions", "potatoes", "cabbage", "carrots"};
+		String[] temp3 = {"apples", "mangoes", "peaches", "pears", "coconuts"};
 		keywords = temp;
 		vegetables = temp2;
 		fruits = temp3;
 		goodbyeWord = "bye";
 		secretWord = "green thumb";
+		fruitCount = 0;
+		veggieCount = 0;
 	}
 
 	@Override
@@ -61,12 +67,17 @@ public class ChatbotGarrett implements Topic {
 	}
 	
 	public void veggieConvo(String response) {
-		ChatbotMain.print("loloxl");
+		veggieCount++;
+		ChatbotMain.print("You would need to plant the " + response + " in fertile soil.");
+		veggiechatting = true;
+		response = "";
+		startChatting(response);
 	}
 	
 	public void fruitConvo(String response) {
-		
+		fruitCount++;
 		ChatbotMain.print("You would need to plant the " + response + " in fertile soil.");
+		fruitchatting = true;
 		response = "";
 		startChatting(response);
 	}

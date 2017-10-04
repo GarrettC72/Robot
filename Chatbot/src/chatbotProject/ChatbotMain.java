@@ -2,6 +2,10 @@ package chatbotProject;
 
 import java.util.Scanner;
 
+import chatbot.NocklesHello;
+import chatbot.NocklesLike;
+import chatbot.School;
+
 public class ChatbotMain {
 	//static means independent of instances
 	//making a method static means you can access it anywhere in the program
@@ -139,4 +143,13 @@ public class ChatbotMain {
 		}
 		return value;
 	}
+}
+
+public void createTopics() {
+	hello = new HelloResponses();
+}
+
+public HelloResponses getHello() {
+	return hello;
+}
 }
