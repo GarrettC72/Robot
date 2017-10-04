@@ -2,9 +2,6 @@ package chatbotProject;
 
 import java.util.Scanner;
 
-import chatbot.NocklesHello;
-import chatbot.NocklesLike;
-import chatbot.School;
 
 public class ChatbotMain {
 	//static means independent of instances
