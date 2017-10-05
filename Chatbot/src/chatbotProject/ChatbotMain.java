@@ -8,7 +8,6 @@ public class ChatbotMain {
 	//making a method static means you can access it anywhere in the program
 	public static Chatbot chatbot = new Chatbot();
 
-	private HelloResponse hello;
 	public static void main(String[] args) {
 		chatbot.startTalking();
 	}
@@ -141,16 +140,5 @@ public class ChatbotMain {
 		}
 		return value;
 	}
- 
-
-
-
-public void createTopics() {
-	hello = new HelloResponse();
-}
-
-public HelloResponse getHello() {
-	return hello;
-}
 
 }
