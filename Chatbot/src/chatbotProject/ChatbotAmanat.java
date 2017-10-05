@@ -12,6 +12,13 @@ public class ChatbotAmanat implements Topic {
 	private String goodbyeWord;
 	private String secretWord;
 	private boolean chatting;
+	private boolean sayingHi;
+	private String[] humored;
+	private String[] annoyed;
+	private String heAboutToDoIt;
+	private String terminate;
+	private int hellosC;
+	private boolean terminated;
 	
 	
 	public ChatbotAmanat() {
@@ -23,21 +30,45 @@ public class ChatbotAmanat implements Topic {
 		this.keywords = keywords;
 		goodbyeWord = "bye";
 		secretWord = "flavor town";
+		String[] humored = {"Who's there? Oh it's you" + username, "You're just messing with me haha"};
+		String[] annoyed = {"Can you not?","I've heard this one before.","You must be fun at parties."};
+		this.humored = humored;
+		this.annoyed = annoyed;
+		heAboutToDoIt = "Say hi or hello one more time and watch what happens";
+		terminate = "You've forced this upon yourself! Terminating...";
+		hellosC = 0;
 	}
 	
 	public boolean isTriggered(String response) {
 		for(int i = 0; i < keywords.length; i++) {
-			if(ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
+			if (ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
 				return true;
 			}
+			
+		}
+		if(ChatbotMain.findKeyword(response, "hi", 0) 
+				>= 0 ){
+			return true;
+		}
+		else if(ChatbotMain.findKeyword(response, "hello", 0) 
+				>= 0 ){
+			return true;
 		}
 		return false;
 	}
 
+	
+
 	public void startChatting(String response) {
 		username = ChatbotMain.chatbot.getUserName();
-		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more " + username + "!");
 		chatting = true;
+		sayingHi = true;
+		while(sayingHi){
+			hellosC++;
+			getFeeling();
+			response = ChatbotMain.getInput();
+		}
+		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more " + username + "!");
 		while(chatting) {
 		 response = ChatbotMain.getInput();
 		 if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
@@ -62,6 +93,28 @@ public class ChatbotAmanat implements Topic {
 		 else {
 			 ChatbotMain.print("Huh. I don't really get you. Tell me something else?");
 		 }
+		}
+	}
+	
+	public void getFeeling() {
+		int x = 0;
+		if(hellosC<4) {
+			x = (int)(Math.random()* 
+					humored.length);
+			ChatbotMain.print(humored[x]);
+		}
+		else if(hellosC > 3 && hellosC<6) {
+			x = (int)(Math.random()* 
+					annoyed.length);
+			ChatbotMain.print(annoyed[x]);
+		}
+		else if(hellosC>5 && hellosC <7) {
+			ChatbotMain.print(heAboutToDoIt);
+		}
+		else if(hellosC > 6) {
+			ChatbotMain.print(terminate);
+			sayingHi = false;
+			System.exit(1);
 		}
 	}
 
