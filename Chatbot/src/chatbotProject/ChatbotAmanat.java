@@ -19,7 +19,6 @@ public class ChatbotAmanat implements Topic {
 	private String terminate;
 	private int hellosC;
 	private boolean terminated;
-	s
 	
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
