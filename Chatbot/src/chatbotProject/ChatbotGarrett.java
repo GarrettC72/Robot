@@ -10,8 +10,8 @@ public class ChatbotGarrett implements Topic {
 	private String userName;
 	
 	private boolean chatting;
-	private boolean veggiechatting;
-	private boolean fruitchatting;
+	private boolean veggieChatting;
+	private boolean fruitChatting;
 	
 	private int fruitCount;
 	private int veggieCount;
@@ -72,7 +72,7 @@ public class ChatbotGarrett implements Topic {
 	public void veggieConvo(String response) {
 		veggieCount++;
 		ChatbotMain.print("You would need to plant the " + response + " in fertile soil.");
-		veggiechatting = true;
+		veggieChatting = true;
 		response = "";
 		startChatting(response);
 	}
@@ -80,7 +80,7 @@ public class ChatbotGarrett implements Topic {
 	public void fruitConvo(String response) {
 		fruitCount++;
 		ChatbotMain.print("You can grow " + response + " on trees.");
-		fruitchatting = true;
+		fruitChatting = true;
 		response = "";
 		startChatting(response);
 	}
