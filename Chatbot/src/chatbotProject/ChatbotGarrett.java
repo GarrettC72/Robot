@@ -20,8 +20,14 @@ public class ChatbotGarrett implements Topic {
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "growing", "fruits", "garden"};
 		String[] temp2 = {"apples", "mangoes", "peaches", "pears", "coconuts"};
+		String[] temp3 = {};
+		String[] temp4 = {};
+		String[] temp5 = {};
 		keywords = temp;
 		fruits = temp2;
+		calmResponses = temp3;
+		angryResponses = temp4;
+		angryAllCapsResponses = temp5;
 		goodbyeWord = "bye";
 		secretWord = "green thumb";
 		fruitCount = 0;
