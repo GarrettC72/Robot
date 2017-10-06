@@ -20,6 +20,9 @@ public class ChatbotAmanat implements Topic {
 	private int hellosC;
 	private String[] yesWords;
 	private String[] spicyList;
+
+	private boolean terminated;
+	
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
 		spicy = "spicy";
@@ -94,6 +97,7 @@ public class ChatbotAmanat implements Topic {
 					}
 					}
 			 
+		 }
 		 }
 		 else if(ChatbotMain.findKeyword(response,bitter,0) >= 0) {
 			 ChatbotMain.print("I see you are a connoisseur of bitter foods. Do you want a list of some?"); 

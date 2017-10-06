@@ -3,8 +3,10 @@ package chatbotProject;
 public class ChatbotGarrett implements Topic {
 	
 	private String[] keywords;
-	private String[] vegetables;
 	private String[] fruits;
+	private String[] calmResponses;
+	private String[] angryResponses;
+	private String[] angryAllCapsResponses;
 	private String goodbyeWord;
 	private String secretWord;
 	private String userName;
@@ -18,8 +20,14 @@ public class ChatbotGarrett implements Topic {
 	public ChatbotGarrett() {
 		String[] temp = {"grow", "growing", "fruits", "garden"};
 		String[] temp2 = {"apples", "mangoes", "peaches", "pears", "coconuts"};
+		String[] temp3 = {};
+		String[] temp4 = {};
+		String[] temp5 = {};
 		keywords = temp;
 		fruits = temp2;
+		calmResponses = temp3;
+		angryResponses = temp4;
+		angryAllCapsResponses = temp5;
 		goodbyeWord = "bye";
 		secretWord = "green thumb";
 		fruitCount = 0;
@@ -54,7 +62,8 @@ public class ChatbotGarrett implements Topic {
 				ChatbotMain.chatbot.startTalking();
 			}else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0) {
 				ChatbotMain.print("Oh my goodness! You must be a gardening fanatic!");
-			}else {
+			}
+			else {
 				ChatbotMain.print("Sorry, I don't know how to grow that particular food. Can you tell me another one?");
 			}
 		}
@@ -93,7 +102,7 @@ public class ChatbotGarrett implements Topic {
 	
 	public void printResponse() {
 		if (fruitCount >= 3 && fruitCount < 5) {
-			ChatbotMain.print("You really love talking about fruit, huh, " + userName + "? I love fruits myself.");
+			ChatbotMain.print("You really love talking about fruit, " + userName + "? I love fruits myself.");
 		}
 		else if (fruitCount >= 5 && fruitCount < 8) {
 			ChatbotMain.print("Actually, I think we've talked about fruit for too long. Maybe you should talk about other food, " + userName + ".");
