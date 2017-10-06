@@ -13,15 +13,15 @@ public class ChatbotRicky implements Topic {
 
 	
 	public ChatbotRicky() {
-		String[] temp1 = {"sweet","salty","popcorn", "snack"}; 
+		String[] temp1 = {"popcorn", "snack","snacks"}; 
 		keywords = temp1;
 		
 		String[] temp2 = {"You should give it a try. You'll like it.","Just beleive me when I say that it is a stairway to heaven for your tastebuds",
-		"Don't do this to yourself, you're missing out big time.", "You won't regret this! Popcorn is the snack you have been missing in your life!"};
+		"Don't do this to yourself, you're missing out big time.", "You won't regret this! Popcorn is the snack you have been missing in your life!","..."};
 		
 		angryPopcornResponses = temp2;
 		
-		String[] temp3 = {"Did you try it yet?","If you don't mind telling me, what flavor did you pick?", "It tastes good, right?", "Are you eating popcorn right now?"};
+		String[] temp3 = {"Did you try it yet?","If you don't mind telling me, what flavor did you pick?", "It tastes good, right?", "Are you eating popcorn right now?", "Adding popcorn to your diet will make your life much butter."};
 		calmPopcornResponses = temp3;
 		
 		goodbyeWord = "bye";	
@@ -51,7 +51,7 @@ public class ChatbotRicky implements Topic {
 				ChatbotMain.print("Oh my goodness! I like Kettle Corn too!");
 			}			
 			else { 
-				ChatbotMain.print("Huh. I don't understand. Mind telling me something else, instead? Maybe a snack?");
+				popcornForever(response);
 			}
 		}
 	}
@@ -60,11 +60,11 @@ public class ChatbotRicky implements Topic {
 		ChatbotMain.print("Hey! You want to learn more about Popcorn,eh? Sounds good to me.");
 		while(popcornChatting) {
 				if(ChatbotMain.findKeyword(response, "no", 0)>= 0 || (ChatbotMain.findKeyword(response, "not", 0)>= 0)){
-					int int1 = (int)(Math.random()*4);
+					int int1 = (int)(Math.random()*angryPopcornResponses.length);
 					ChatbotMain.print(angryPopcornResponses[int1]);
 				}
 				else {
-					int int1 = (int)(Math.random()*4);
+					int int1 = (int)(Math.random()*calmPopcornResponses.length);
 					ChatbotMain.print(calmPopcornResponses[int1]);
 				}
 			
