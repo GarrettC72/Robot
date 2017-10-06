@@ -18,9 +18,8 @@ public class ChatbotAmanat implements Topic {
 	private String heAboutToDoIt;
 	private String terminate;
 	private int hellosC;
-	private boolean terminated;
-	s
-	
+	private String[] yesWords;
+	private String[] spicyList;
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
 		spicy = "spicy";
@@ -30,14 +29,18 @@ public class ChatbotAmanat implements Topic {
 		this.keywords = keywords;
 		goodbyeWord = "bye";
 		secretWord = "flavor town";
-		String[] humored = {"Who's there? Oh it's you" + username, "You're just messing with me haha"};
+		String[] humored = {"Who's there? Oh, it's you " + username +".", "You're just messing with me haha"};
 		String[] annoyed = {"Can you not?","I've heard this one before.","You must be fun at parties."};
 		this.humored = humored;
 		this.annoyed = annoyed;
 		heAboutToDoIt = "Say hi or hello one more time and watch what happens";
 		terminate = "You've forced this upon yourself! Terminating...";
 		hellosC = 0;
-	}
+		String[] yesWords = {"yes","ok","very well","please do","let me see them","yea","okey-dokey","yp"} ;
+		this.yesWords = yesWords;
+		String[] spicyList = {"chilli","pepper","curry","salsa",""};
+		this.spicyList = spicyList;
+		}
 	
 	public boolean isTriggered(String response) {
 		for(int i = 0; i < keywords.length; i++) {
@@ -48,10 +51,14 @@ public class ChatbotAmanat implements Topic {
 		}
 		if(ChatbotMain.findKeyword(response, "hi", 0) 
 				>= 0 ){
+			hellosC = hellosC + 1;
+			getFeeling();
 			return true;
 		}
 		else if(ChatbotMain.findKeyword(response, "hello", 0) 
 				>= 0 ){
+			hellosC = hellosC + 1;
+			getFeeling();
 			return true;
 		}
 		return false;
@@ -62,12 +69,6 @@ public class ChatbotAmanat implements Topic {
 	public void startChatting(String response) {
 		username = ChatbotMain.chatbot.getUserName();
 		chatting = true;
-		sayingHi = true;
-		while(sayingHi){
-			hellosC++;
-			getFeeling();
-			response = ChatbotMain.getInput();
-		}
 		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more " + username + "!");
 		while(chatting) {
 		 response = ChatbotMain.getInput();
@@ -86,16 +87,31 @@ public class ChatbotAmanat implements Topic {
 		 }
 		 else if(ChatbotMain.findKeyword(response,spicy,0) >= 0) {
 			 ChatbotMain.print("Spicy foods for a spicy person! Would you like a list of torturous foods?"); 
+			 for(int i = 0; i < keywords.length; i++) {
+					if (ChatbotMain.findKeyword(response, yesWords[i], 0) >= 0) {
+						 if(onSpicy == true) {
+							 ChatbotMain.print("OK here you go: " + spicyList);
+					}
+					}
+			 
 		 }
 		 else if(ChatbotMain.findKeyword(response,bitter,0) >= 0) {
 			 ChatbotMain.print("I see you are a connoisseur of bitter foods. Do you want a list of some?"); 
 		 }
 		 else {
-			 ChatbotMain.print("Huh. I don't really get you. Tell me something else?");
+			 ChatbotMain.print("Huh," + response + ". I guess my creators were too lazy to implement that. ");
 		 }
 		}
 	}
 	
+	public String helloResponse(String response) {
+		sayingHi = true;
+		while(sayingHi){
+			getFeeling();
+			response = ChatbotMain.getInput();
+		}
+		return response;
+	}
 	public void getFeeling() {
 		int x = 0;
 		if(hellosC<4) {
