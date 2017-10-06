@@ -18,11 +18,13 @@ public class ChatbotGarrett implements Topic {
 	
 	
 	public ChatbotGarrett() {
-		String[] temp = {"grow", "growing", "fruits", "garden"};
+		String[] temp = {"grow", "growing", "fruits", "garden", "gardening"};
 		String[] temp2 = {"apples", "mangoes", "peaches", "pears", "coconuts"};
-		String[] temp3 = {};
-		String[] temp4 = {};
-		String[] temp5 = {};
+		String[] temp3 = {"You really love talking about fruit, don't you, " + userName + "?", "You must love fruit as much as I do ... fantastic!!!", "Our love for fruit make us a really good 'pear', doesn't it?"};
+		String[] temp4 = {"Actually, I think we've talked about fruit for too long. Maybe you should talk about other food, " + userName + ".", 
+				"You look like you want to talk endlessly about fruit, but can you coco-not?", "I can tell you really like fruit, but how about we talk about other food instead?"};
+		String[] temp5 = {"OK, SERIOUSLY WE'VE ALREADY TALKED ABOUT THIS! IT'S TIME TO MOVE ON! I CAN ONLY TALK ABOUT GARDENING FOR SO LONG!!!!!", 
+				".......................", "TYPE 'BYE' ALREADY. I DON'T WANT TO TALK ABOUT FRUIT ANYMORE!"};
 		keywords = temp;
 		fruits = temp2;
 		calmResponses = temp3;
@@ -46,7 +48,7 @@ public class ChatbotGarrett implements Topic {
 	@Override
 	public void startChatting(String response) {
 		userName = ChatbotMain.chatbot.getUserName();
-		ChatbotMain.print("Hey! It sounds like you want to grow your own food! What would you like to know, " + userName + "?");
+		ChatbotMain.print("Hey! It sounds like you want to learn more about fruit! What would you like to know specifically, " + userName + "?");
 		chatting = true;
 		while(chatting) {
 			response = ChatbotMain.getInput();
@@ -64,7 +66,7 @@ public class ChatbotGarrett implements Topic {
 				ChatbotMain.print("Oh my goodness! You must be a gardening fanatic!");
 			}
 			else {
-				ChatbotMain.print("Sorry, I don't know how to grow that particular food. Can you tell me another one?");
+				ChatbotMain.print("Sorry, I don't know anything about " + response + ". Tell me another fruit!");
 			}
 		}
 	}
@@ -94,7 +96,7 @@ public class ChatbotGarrett implements Topic {
 					ChatbotMain.chatbot.startTalking();
 				}
 				else {
-					ChatbotMain.print("Sorry, I don't know how to grow that particular food. Can you tell me another one?");
+					ChatbotMain.print("Sorry, I don't know anything about " + response + ". Tell me another fruit!");
 				}
 			}
 		}
@@ -102,14 +104,16 @@ public class ChatbotGarrett implements Topic {
 	
 	public void printResponse() {
 		if (fruitCount >= 3 && fruitCount < 5) {
-			ChatbotMain.print("You really love talking about fruit, " + userName + "? I love fruits myself.");
+			int responseInd = (int)(Math.random()*calmResponses.length);
+			ChatbotMain.print(calmResponses[responseInd]);
 		}
 		else if (fruitCount >= 5 && fruitCount < 8) {
-			ChatbotMain.print("Actually, I think we've talked about fruit for too long. Maybe you should talk about other food, " + userName + ".");
+			int responseInd = (int)(Math.random()*angryResponses.length);
+			ChatbotMain.print(angryResponses[responseInd]);
 		}
 		else if (fruitCount >= 8) {
-			ChatbotMain.print("OK, SERIOUSLY WE'VE ALREADY TALKED ABOUT THIS! IT'S TIME TO MOVE ON! I CAN ONLY TALK ABOUT GARDENING FOR SO LONG!!!!!"
-					+ "IF YOU KEEP THIS UP I'M LEAVING YOU!");
+			int responseInd = (int)(Math.random()*angryAllCapsResponses.length);
+			ChatbotMain.print(angryAllCapsResponses[responseInd]);
 		}
 	}
 }
