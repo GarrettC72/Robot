@@ -57,7 +57,7 @@ public class ChatbotRicky implements Topic {
 	}
 	
 	public void popcornForever(String response){
-		ChatbotMain.print("Hey! You want to learn more about Popcorn,eh? Sounds good to me.");
+		ChatbotMain.print("Hey! You want to talk about snacks like Popcorn,eh? Sounds good to me.");
 		popcornChatting = true;
 		while(popcornChatting) {
 				response = ChatbotMain.getInput();
