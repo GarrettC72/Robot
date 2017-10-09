@@ -58,7 +58,9 @@ public class ChatbotRicky implements Topic {
 	
 	public void popcornForever(String response){
 		ChatbotMain.print("Hey! You want to learn more about Popcorn,eh? Sounds good to me.");
+		popcornChatting = true;
 		while(popcornChatting) {
+				response = ChatbotMain.getInput();
 				if(ChatbotMain.findKeyword(response, "no", 0)>= 0 || (ChatbotMain.findKeyword(response, "not", 0)>= 0)){
 					int int1 = (int)(Math.random()*angryPopcornResponses.length);
 					ChatbotMain.print(angryPopcornResponses[int1]);
@@ -67,7 +69,10 @@ public class ChatbotRicky implements Topic {
 					int int1 = (int)(Math.random()*calmPopcornResponses.length);
 					ChatbotMain.print(calmPopcornResponses[int1]);
 				}
-			
+				if (ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
+					chatting = false;
+					ChatbotMain.chatbot.startTalking();
+				}
 		}
 	}
 }
