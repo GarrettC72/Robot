@@ -50,9 +50,12 @@ public class ChatbotRicky implements Topic {
 			else if(ChatbotMain.findKeyword(response, secretWord, 0) >= 0 ) {
 				ChatbotMain.print("Oh my goodness! I like Kettle Corn too!");
 			}			
-			else { 
+			else if(ChatbotMain.findKeyword(response, "popcorn", 0)>= 0) {
 				popcornForever(response);
 			} 
+			else {
+				ChatbotMain.print("This Chatbot does not know what you are talking about. Please type something else instead.");
+			}
 		}
 	}
 	
