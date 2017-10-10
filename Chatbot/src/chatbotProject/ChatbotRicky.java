@@ -64,18 +64,21 @@ public class ChatbotRicky implements Topic {
 		popcornChatting = true;
 		while(popcornChatting) {
 				response = ChatbotMain.getInput();
-				if(ChatbotMain.findKeyword(response, "no", 0)>= 0 || (ChatbotMain.findKeyword(response, "not", 0)>= 0)){
+				if(ChatbotMain.findKeyword(response, "no", 0)>= 0 || (ChatbotMain.findKeyword(response, "not", 0)>= 0) || (ChatbotMain.findKeyword(response, "bad", 0)>= 0)){
 					int int1 = (int)(Math.random()*angryPopcornResponses.length);
 					ChatbotMain.print(angryPopcornResponses[int1]);
 				}
-				else if(ChatbotMain.findKeyword(response, "yes", 0)>= 0 || (ChatbotMain.findKeyword(response, "yeah", 0)>= 0)) {
+				else if(ChatbotMain.findKeyword(response, "yes", 0)>= 0 || (ChatbotMain.findKeyword(response, "yeah", 0)>= 0) || (ChatbotMain.findKeyword(response, "good", 0)>= 0)) {
 					int int1 = (int)(Math.random()*calmPopcornResponses.length);
 					ChatbotMain.print(calmPopcornResponses[int1]);
 				}
 				else if (ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
-					chatting = false;
+					popcornChatting = false;
 					ChatbotMain.chatbot.startTalking();
 				} 
+				else {
+					ChatbotMain.print("Don't you think popcorn is the best?");
+				}
 		}
 	}
 }
