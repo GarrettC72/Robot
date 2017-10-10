@@ -72,7 +72,7 @@ public class ChatbotRicky implements Topic {
 				if (ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
 					chatting = false;
 					ChatbotMain.chatbot.startTalking();
-				}
+				} 
 		}
 	}
 }
