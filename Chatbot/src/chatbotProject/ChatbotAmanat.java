@@ -1,9 +1,9 @@
 package chatbotProject;
 
 public class ChatbotAmanat implements Topic {
-
-	private String username;
+	
 	private String[] keywords;
+	private String username;
 	private String goodbyeWord;
 	private String secretWord;
 	private boolean chatting;
@@ -14,7 +14,8 @@ public class ChatbotAmanat implements Topic {
 	private int hellosC;
 	private String[] flavorList;
 	private String[] hiList;
-
+	private String[] flavorFoods;
+	
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
 		this.keywords = keywords;
@@ -46,25 +47,31 @@ public class ChatbotAmanat implements Topic {
 		username = ChatbotMain.chatbot.getUserName();
 		chatting = true;
 		sayByeOrSecret(response);
-		ChatbotMain.print("Hey! It sounds like you and I have a common interest! Let's talk some more " + username + "!");
+		getFeeling(response);
+		ChatbotMain.print("So you want to know about flavors and their respective foods " + username + "? Just type in a flavor!");
 		while(chatting) {
 		 response = ChatbotMain.getInput();
-		 for (int i = 0; i < keywords.length; i++) {
-				if (ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
-					chatting = false;
-					flavorTalk(flavorList[i]);
-					return;
-				}
-			}
-		}
+		 flavorTalk(response);
 	}
-	
+	}
 	public void flavorTalk(String response) {
 		sayByeOrSecret(response);
-		if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
-			 chatting = false;
-			 ChatbotMain.chatbot.startTalking();
+		getFeeling(response);
+		for(int i = 0; i < flavorList.length; i++) {
+			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
+				ChatbotMain.print("So you want to  know more about the flavor " + response + " huh? Well I got you covered!");
+				flavorFoods(response);
+			}
+		}
 		 }
+	public void flavorFoods(String response) {
+		sayByeOrSecret(response);
+		getFeeling(response);
+		for(int i = 0; i < flavorList.length; i++) {
+			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
+				ChatbotMain.print(flavorFoods[i]);
+	}
+		}
 	}
 	
 	public void sayByeOrSecret(String response) {
@@ -73,11 +80,18 @@ public class ChatbotAmanat implements Topic {
 			 ChatbotMain.chatbot.startTalking();
 		 }
 		 else if(ChatbotMain.findKeyword(response,secretWord,0) >= 0) {
-			 ChatbotMain.print("Oh my goodness! You guessed my favorite thing ever. We are friends now."); 
+			 ChatbotMain.print("Let's take a trip to Flavor Town with Guy Fieri!"); 
+		 }
+		 else
+		 {
+			 ChatbotMain.print("Sorry I don't understand waht you are talking about please rephrase it.");
 		 }
 	}
 	
 	public void getFeeling(String response) {
+		for(int i = 0; i < hiList.length; i++){
+			if(ChatbotMain.findKeyword(response, hiList[i], 0) >= 0) {
+				
 		hellosC++;
 		int x = 0;
 		if(hellosC<4) {
@@ -98,5 +112,6 @@ public class ChatbotAmanat implements Topic {
 			System.exit(1);
 		}
 	}
-
+		}
+	}
 }
