@@ -52,7 +52,7 @@ public class ChatbotRicky implements Topic {
 			}			
 			else { 
 				popcornForever(response);
-			} 
+			} //commit
 		}
 	}
 	
