@@ -5,6 +5,7 @@ public class ChatbotRicky implements Topic {
 	private String[] keywords;
 	private String[] calmPopcornResponses;
 	private String[] angryPopcornResponses;
+	private String[] lookingForResponse;
 	private String goodbyeWord;
 	private String secretWord;
 	private String userName;
@@ -16,13 +17,16 @@ public class ChatbotRicky implements Topic {
 		String[] temp1 = {"popcorn", "snack","snacks"}; 
 		keywords = temp1;
 		
-		String[] temp2 = {"You should give it a try. You'll like it.","Just beleive me!!",
+		String[] temp2 = {"You should give it a try. You'll like it.","It sure would be wonderful if you liked it as much as I do!!",
 		"Don't do this to yourself, you're missing out big time.", "You won't regret this! Popcorn is the snack you have been missing in your life!","..."};
 		
 		angryPopcornResponses = temp2;
 		
 		String[] temp3 = {"Did you try it yet?", "It tastes good, right?", "Are you eating popcorn right now?", "Adding popcorn to your diet will make your life much butter.","Are you enjoying it?"};
 		calmPopcornResponses = temp3;
+		
+		String[] temp4 = {"Why aren't you answering me?!","Answer my question?!","I'm getting ANNOYED. Just answer my question and we can talk about other stuff if you want!"};
+		lookingForResponse = temp4;
 		
 		goodbyeWord = "bye";	
 		secretWord = "Kettle Corn";
@@ -39,7 +43,7 @@ public class ChatbotRicky implements Topic {
 
 	public void startChatting(String response) {
 		userName = ChatbotMain.chatbot.getUserName();
-		ChatbotMain.print("Hey " + userName + " ! You and I have a common interest in popcorn!!");
+		ChatbotMain.print("Hey " + userName + " ! You and I have a common interest in popcorn!! ");
 		chatting = true;
 		while (chatting) {
 			response = ChatbotMain.getInput();	
@@ -54,7 +58,7 @@ public class ChatbotRicky implements Topic {
 				popcornForever(response);
 			} 
 			else {
-				ChatbotMain.print("This Chatbot does not know what you are talking about. Please type something else instead.");
+				ChatbotMain.print("This Chatbot does not know what you are talking about. Please type something else like popcorn instead.");
 			}
 		}
 	}
@@ -63,6 +67,7 @@ public class ChatbotRicky implements Topic {
 		ChatbotMain.print("Hey! You want to talk about snacks like Popcorn,eh? Sounds good to me.");
 		popcornChatting = true;
 		while(popcornChatting) {
+				ChatbotMain.print("Don't you think popcorn is the best?");
 				response = ChatbotMain.getInput();
 				if(ChatbotMain.findKeyword(response, "no", 0)>= 0 || (ChatbotMain.findKeyword(response, "not", 0)>= 0) || (ChatbotMain.findKeyword(response, "bad", 0)>= 0)){
 					int int1 = (int)(Math.random()*angryPopcornResponses.length);
@@ -77,6 +82,8 @@ public class ChatbotRicky implements Topic {
 					ChatbotMain.chatbot.startTalking();
 				} 
 				else {
+					int int1 = (int)(Math.random()*lookingForResponse.length);
+					ChatbotMain.print(lookingForResponse[int1]);
 					ChatbotMain.print("Don't you think popcorn is the best?");
 				}
 		}
