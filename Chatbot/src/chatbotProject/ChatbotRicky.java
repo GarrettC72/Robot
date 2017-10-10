@@ -16,12 +16,12 @@ public class ChatbotRicky implements Topic {
 		String[] temp1 = {"popcorn", "snack","snacks"}; 
 		keywords = temp1;
 		
-		String[] temp2 = {"You should give it a try. You'll like it.","Just beleive me when I say that it is a stairway to heaven for your tastebuds",
+		String[] temp2 = {"You should give it a try. You'll like it.","Just beleive me!!",
 		"Don't do this to yourself, you're missing out big time.", "You won't regret this! Popcorn is the snack you have been missing in your life!","..."};
 		
 		angryPopcornResponses = temp2;
 		
-		String[] temp3 = {"Did you try it yet?","If you don't mind telling me, what flavor did you pick?", "It tastes good, right?", "Are you eating popcorn right now?", "Adding popcorn to your diet will make your life much butter."};
+		String[] temp3 = {"Did you try it yet?", "It tastes good, right?", "Are you eating popcorn right now?", "Adding popcorn to your diet will make your life much butter.","Are you enjoying it?"};
 		calmPopcornResponses = temp3;
 		
 		goodbyeWord = "bye";	
@@ -68,11 +68,11 @@ public class ChatbotRicky implements Topic {
 					int int1 = (int)(Math.random()*angryPopcornResponses.length);
 					ChatbotMain.print(angryPopcornResponses[int1]);
 				}
-				else {
+				else if(ChatbotMain.findKeyword(response, "yes", 0)>= 0 || (ChatbotMain.findKeyword(response, "yeah", 0)>= 0)) {
 					int int1 = (int)(Math.random()*calmPopcornResponses.length);
 					ChatbotMain.print(calmPopcornResponses[int1]);
 				}
-				if (ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
+				else if (ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
 					chatting = false;
 					ChatbotMain.chatbot.startTalking();
 				} 
