@@ -58,7 +58,7 @@ public class ChatbotRicky implements Topic {
 				popcornForever(response);
 			} 
 			else {
-				ChatbotMain.print("This Chatbot does not know what you are talking about. Please type something else like popcorn instead.");
+				ChatbotMain.print("This Chatbot does not know what you are talking about. Please type something else that's related to popcorn instead.");
 			}
 		}
 	}
