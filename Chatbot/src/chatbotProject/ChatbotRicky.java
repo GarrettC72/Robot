@@ -85,7 +85,7 @@ public class ChatbotRicky implements Topic {
 					int int1 = (int)(Math.random()*lookingForResponse.length);
 					ChatbotMain.print(lookingForResponse[int1]);
 					ChatbotMain.print("Don't you think popcorn is the best?");
-				}
+				} 
 		}
 	}
 }
