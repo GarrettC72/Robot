@@ -96,6 +96,7 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void sayByeOrSecret(String response) {
+		boolean notIn = false;
 		 if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
 			 notIn = true;
 			 chatting = false;
@@ -108,28 +109,32 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void getFeeling(String response) {
+		boolean notIn = false;
 		for(int i = 0; i < hiList.length; i++){
-			if(ChatbotMain.findKeyword(response, hiList[i], 0) >= 0) {
-		notIn = true;	
+			if(ChatbotMain.findKeyword(response, hiList[i], 0) >= 0) {	
 		hellosC++;
 		int x = 0;
 		if(hellosC<4) {
+			notIn = true;
 			x = (int)(Math.random()* 
 					humored.length);
 			ChatbotMain.print(humored[x]);
 			break;
 		}
 		else if(hellosC > 3 && hellosC<6) {
+			notIn = true;
 			x = (int)(Math.random()* 
 					annoyed.length);
 			ChatbotMain.print(annoyed[x]);
 			break;
 		}
 		else if(hellosC>5 && hellosC <7) {
+			notIn = true;
 			ChatbotMain.print(heAboutToDoIt);
-			break
+			break;
 		}
 		else if(hellosC > 6) {
+			notIn = true;
 			ChatbotMain.print(terminate);
 			System.exit(1);
 		}
