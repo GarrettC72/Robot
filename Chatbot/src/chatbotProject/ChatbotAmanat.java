@@ -62,56 +62,72 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void flavorTalk(String response) {
+		boolean notIn = false;
 		sayByeOrSecret(response);
 		getFeeling(response);
 		for(int i = 0; i < flavorList.length; i++) {
 			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
 				ChatbotMain.print("So you want to  know more about the flavor " + response + " huh? Well I got you covered!");
 				flavorFoods(response);
+				notIn = true;
+				break;
 			}
 		 }
+		if(!notIn){
+			ChatbotMain.print("I'm sorry I don't understand. Can you rephrase?");
+		}
 		}
 	
 	
 	public void flavorFoods(String response) {
+		boolean notIn = false;
 		sayByeOrSecret(response);
 		getFeeling(response);
 		for(int i = 0; i < flavorList.length; i++) {
 			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
 				ChatbotMain.print(flavorFoods[i]);
+				notIn = true;
+				break;
 	}
 		}
-		
+		if(!notIn){
+			ChatbotMain.print("I'm sorry I don't understand. Can you rephrase?");
+		}
 	}
 	
 	public void sayByeOrSecret(String response) {
 		 if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
+			 notIn = true;
 			 chatting = false;
 			 ChatbotMain.chatbot.startTalking();
 		 }
 		 else if(ChatbotMain.findKeyword(response,secretWord,0) >= 0) {
 			 ChatbotMain.print("Let's take a trip to Flavor Town with Guy Fieri!"); 
+			 notIn = true;
 		 }
 	}
 	
 	public void getFeeling(String response) {
 		for(int i = 0; i < hiList.length; i++){
 			if(ChatbotMain.findKeyword(response, hiList[i], 0) >= 0) {
-				
+		notIn = true;	
 		hellosC++;
 		int x = 0;
 		if(hellosC<4) {
 			x = (int)(Math.random()* 
 					humored.length);
 			ChatbotMain.print(humored[x]);
+			break;
 		}
 		else if(hellosC > 3 && hellosC<6) {
 			x = (int)(Math.random()* 
 					annoyed.length);
 			ChatbotMain.print(annoyed[x]);
+			break;
 		}
 		else if(hellosC>5 && hellosC <7) {
 			ChatbotMain.print(heAboutToDoIt);
+			break
 		}
 		else if(hellosC > 6) {
 			ChatbotMain.print(terminate);
