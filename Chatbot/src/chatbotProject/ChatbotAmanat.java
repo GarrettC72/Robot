@@ -15,6 +15,7 @@ public class ChatbotAmanat implements Topic {
 	private String[] flavorList;
 	private String[] hiList;
 	private String[] flavorFoods;
+	private boolean notIn;
 	
 	public ChatbotAmanat() {
 		String[] keywords = {"flavor","taste","savor","zest"};
@@ -62,7 +63,6 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void flavorTalk(String response) {
-		boolean notIn = false;
 		sayByeOrSecret(response);
 		getFeeling(response);
 		for(int i = 0; i < flavorList.length; i++) {
@@ -80,12 +80,12 @@ public class ChatbotAmanat implements Topic {
 	
 	
 	public void flavorFoods(String response) {
-		boolean notIn = false;
 		sayByeOrSecret(response);
 		getFeeling(response);
 		for(int i = 0; i < flavorList.length; i++) {
 			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
 				ChatbotMain.print(flavorFoods[i]);
+				ChatbotMain.print("Type in another flavor for another list.");
 				notIn = true;
 				break;
 	}
@@ -96,7 +96,11 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void sayByeOrSecret(String response) {
-		boolean notIn = false;
+		for(int i = 0; i < flavorList.length; i++) {
+			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
+				notIn = true;
+			}
+		}
 		 if(ChatbotMain.findKeyword(response, goodbyeWord, 0) >= 0) {
 			 notIn = true;
 			 chatting = false;
@@ -109,11 +113,16 @@ public class ChatbotAmanat implements Topic {
 	}
 	
 	public void getFeeling(String response) {
-		boolean notIn = false;
+		for(int i = 0; i < flavorList.length; i++) {
+			if(ChatbotMain.findKeyword(response, flavorList[i], 0) >= 0) {
+				notIn = true;
+			}
+		}
 		for(int i = 0; i < hiList.length; i++){
 			if(ChatbotMain.findKeyword(response, hiList[i], 0) >= 0) {	
 		hellosC++;
 		int x = 0;
+		chatting = true;
 		if(hellosC<4) {
 			notIn = true;
 			x = (int)(Math.random()* 
